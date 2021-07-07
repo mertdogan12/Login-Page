@@ -1,0 +1,14 @@
+button {
+  background-color: #2f2fa2;
+  border-radius: 3px;
+}
+
+.login {
+  position: absolute;
+  left: 38.5vw;
+  top: 20vh;
+}
+
+html {
+  background-color: #e8edf2;
+}

@@ -9,7 +9,7 @@ export async function login(username: string, password: string) {
     redirect: "follow",
   };
 
-  fetch("http://localhost:5000/users/login", requestOptions).then(
+  fetch("https://www.dogan.at/authServer/users/login", requestOptions).then(
     async (response) => {
       if (!response.ok) throw response.statusText;
 

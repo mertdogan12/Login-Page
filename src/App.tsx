@@ -7,6 +7,7 @@ import Login from "./sides/login/Login";
 function App() {
   return (
     <Router>
+      <p id="error">Error: </p>
       <Switch>
         <Route path="/login">
           <Login />

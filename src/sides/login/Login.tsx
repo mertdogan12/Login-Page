@@ -1,3 +1,4 @@
+import { error } from "console";
 import React from "react";
 import { login } from "../../apis/authServer/Users";
 import "./style.css";
@@ -8,15 +9,16 @@ type MyState = {
 };
 
 class Login extends React.Component<MyProps, MyState> {
-  state: MyState = {
-    error: "",
-  };
-
   constructor(props: MyProps) {
     super(props);
-    const errorElement: any = document.getElementById;
 
-    errorElement.innerHTML = this.state.error;
+    if (this.state) console.log(this.state.error);
+
+    this.state = {
+      error: "",
+    };
+
+    this.onLoginClick = this.onLoginClick.bind(this);
   }
 
   async onLoginClick() {
@@ -24,10 +26,12 @@ class Login extends React.Component<MyProps, MyState> {
       const usernameElement: any = document.getElementById("username");
       const passwordElement: any = document.getElementById("password");
 
-      await login(usernameElement.innerHTML, passwordElement.innerHTML);
-    } catch (error: any) {
+      await login(usernameElement.value, passwordElement.value);
+    } catch (error) {
+      console.log(error.toString());
+
       this.setState({
-        error: error,
+        error: error.toString(),
       });
     }
   }

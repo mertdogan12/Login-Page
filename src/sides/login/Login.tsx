@@ -1,5 +1,6 @@
-import { error } from "console";
-import React from "react";
+import { KeyObject } from "crypto";
+import React, { KeyboardEventHandler } from "react";
+import { Key } from "readline";
 import { login } from "../../apis/authServer/Users";
 import "./style.css";
 
@@ -12,13 +13,12 @@ class Login extends React.Component<MyProps, MyState> {
   constructor(props: MyProps) {
     super(props);
 
-    if (this.state) console.log(this.state.error);
-
     this.state = {
       error: "",
     };
 
     this.onLoginClick = this.onLoginClick.bind(this);
+    this.onKeyDown = this.onKeyDown.bind(this);
   }
 
   async onLoginClick() {
@@ -26,19 +26,24 @@ class Login extends React.Component<MyProps, MyState> {
       const usernameElement: any = document.getElementById("username");
       const passwordElement: any = document.getElementById("password");
 
-      await login(usernameElement.value, passwordElement.value);
+      console.log(await login(usernameElement.value, passwordElement.value));
     } catch (error) {
-      console.log(error.toString());
-
       this.setState({
-        error: error.toString(),
+        error: error.name,
       });
+    }
+  }
+
+  onKeyDown(event: React.KeyboardEvent<HTMLDivElement>) {
+    if (event.key === "Enter") {
+      this.onLoginClick();
     }
   }
 
   render() {
     return (
-      <div className="login">
+      <div className="login" onKeyDown={this.onKeyDown}>
+        <p>{this.state.error}</p>
         <input id="username" placeholder="Username" type="text" />
         <input id="password" placeholder="Password" type="password" />
         <button onClick={this.onLoginClick}>Login</button>

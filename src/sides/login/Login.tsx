@@ -1,4 +1,5 @@
 import React from "react";
+import Error from "../error/Error";
 import { login } from "../../apis/authServer/Users";
 import "./style.css";
 
@@ -29,6 +30,8 @@ class Login extends React.Component<MyProps, MyState> {
       this.setState({
         error: error.name,
       });
+
+      return;
     }
   }
 
@@ -36,19 +39,18 @@ class Login extends React.Component<MyProps, MyState> {
     if (event.key === "Enter") {
       this.onLoginClick();
     }
+
+    this.setState({
+      error: "",
+    });
   }
 
   render() {
     return (
-      <div className="login">
-        <p>{this.state.error}</p>
+      <div className="login" onKeyDown={this.onKeyDown}>
+        <Error error={this.state.error} />
         <input id="username" placeholder="Username" type="text" />
-        <input
-          id="password"
-          placeholder="Password"
-          type="password"
-          onKeyDown={this.onKeyDown}
-        />
+        <input id="password" placeholder="Password" type="password" />
         <button onClick={this.onLoginClick}>Login</button>
         <div id="seperator">OR</div>
         <button id="register">Register</button>

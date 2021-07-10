@@ -1,6 +1,4 @@
-import { KeyObject } from "crypto";
-import React, { KeyboardEventHandler } from "react";
-import { Key } from "readline";
+import React from "react";
 import { login } from "../../apis/authServer/Users";
 import "./style.css";
 
@@ -42,10 +40,15 @@ class Login extends React.Component<MyProps, MyState> {
 
   render() {
     return (
-      <div className="login" onKeyDown={this.onKeyDown}>
+      <div className="login">
         <p>{this.state.error}</p>
         <input id="username" placeholder="Username" type="text" />
-        <input id="password" placeholder="Password" type="password" />
+        <input
+          id="password"
+          placeholder="Password"
+          type="password"
+          onKeyDown={this.onKeyDown}
+        />
         <button onClick={this.onLoginClick}>Login</button>
         <div id="seperator">OR</div>
         <button id="register">Register</button>

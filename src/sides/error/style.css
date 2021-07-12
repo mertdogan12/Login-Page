@@ -1,3 +1,7 @@
-#error {
+.error {
   visibility: hidden;
+  background-color: red;
+
+  padding-right: 1vw;
+  padding-left: 1vw;
 }

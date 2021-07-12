@@ -47,13 +47,15 @@ class Login extends React.Component<MyProps, MyState> {
 
   render() {
     return (
-      <div className="login" onKeyDown={this.onKeyDown}>
+      <div className="outside">
         <Error error={this.state.error} />
-        <input id="username" placeholder="Username" type="text" />
-        <input id="password" placeholder="Password" type="password" />
-        <button onClick={this.onLoginClick}>Login</button>
-        <div id="seperator">OR</div>
-        <button id="register">Register</button>
+        <div className="login" onKeyDown={this.onKeyDown}>
+          <input id="username" placeholder="Username" type="text" />
+          <input id="password" placeholder="Password" type="password" />
+          <button onClick={this.onLoginClick}>Login</button>
+          <div id="seperator">OR</div>
+          <button id="register">Register</button>
+        </div>
       </div>
     );
   }

@@ -5,25 +5,31 @@ type MyProps = {
   error: string;
 };
 type MyState = {};
+let timeout: number;
 
 export default class Error extends React.Component<MyProps, MyState> {
   componentDidUpdate() {
     if (this.props.error) {
       this.setVisibility("visible");
 
-      setTimeout(this.setVisibility, 20 * 1000, "hidden");
+      if (timeout) clearTimeout(timeout);
+      timeout = setTimeout(this.setVisibility, 5 * 1000, "hidden");
     } else this.setVisibility("hidden");
   }
 
   setVisibility(visibility: string) {
-    const errorElement: HTMLElement = document.getElementById(
+    const errorElements: HTMLCollection = document.getElementsByClassName(
       "error"
-    ) as HTMLElement;
+    ) as HTMLCollection;
 
-    errorElement.style.visibility = visibility;
+    (errorElements.item(0) as HTMLElement).style.visibility = visibility;
   }
 
   render() {
-    return <p id="error">{this.props.error}</p>;
+    return (
+      <div className="error">
+        <p>{this.props.error}</p>
+      </div>
+    );
   }
 }

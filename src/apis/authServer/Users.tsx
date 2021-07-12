@@ -8,7 +8,10 @@ export async function login(username: string, password: string) {
     throw error;
   }
 
-  const response = await fetch("http://localhost:5000/users/login", {
+  const publicUrl: string = "https://www.dogan.at/authServer/users/login";
+  const localURl: string = "http://localhost:5000/users/login";
+
+  const response = await fetch(localURl, {
     method: "POST",
     body: JSON.stringify({
       name: username,

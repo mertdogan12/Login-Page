@@ -1,0 +1,22 @@
+.navbar {
+  background-color: #161b22;
+
+  border-radius: 0px;
+
+  width: 100vw;
+}
+
+#link {
+  color: white;
+  text-decoration: none;
+
+  display: block;
+  right: 0px;
+  font-size: 2.5vh;
+  padding: 0.5vh 1vw 0.5vh 1vw;
+  width: 5vw;
+}
+
+#link:hover {
+  background-color: #1f6feb;
+}

@@ -25,6 +25,12 @@ input {
   top: 1vh;
 }
 
+.navbar {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
 html {
   background-color: #090c10;
 }

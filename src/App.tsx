@@ -1,6 +1,7 @@
 import "./style.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from "./sides/login/Login";
+import NavBar from "./sides/nav-bar/NavBar";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           </Switch>
         </Route>
         <Route path="/dashboard">
+          <NavBar />
           <Switch>
             <Route path="*/start">
               <h1>Welcomme</h1>

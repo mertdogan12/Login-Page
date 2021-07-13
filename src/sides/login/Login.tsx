@@ -1,11 +1,19 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
+import { SetCookie } from "../../apis/Cookies";
 import Error from "../error/Error";
 import { login } from "../../apis/authServer/Users";
 import "./style.css";
+import { History } from "history";
 
-type MyProps = {};
+type MyProps = {
+  match: any;
+  location: any;
+  history: History;
+};
 type MyState = {
   error: string;
+  url: string;
 };
 
 class Login extends React.Component<MyProps, MyState> {
@@ -14,6 +22,7 @@ class Login extends React.Component<MyProps, MyState> {
 
     this.state = {
       error: "",
+      url: "",
     };
 
     this.onLoginClick = this.onLoginClick.bind(this);
@@ -25,7 +34,14 @@ class Login extends React.Component<MyProps, MyState> {
       const usernameElement: any = document.getElementById("username");
       const passwordElement: any = document.getElementById("password");
 
-      console.log(await login(usernameElement.value, passwordElement.value));
+      const token: string = await login(
+        usernameElement.value,
+        passwordElement.value
+      );
+
+      SetCookie("jwttoken", token, 7);
+
+      this.props.history.push("/dashboard/start");
     } catch (error) {
       this.setState({
         error: error.name,
@@ -61,4 +77,4 @@ class Login extends React.Component<MyProps, MyState> {
   }
 }
 
-export default Login;
+export default withRouter(Login);

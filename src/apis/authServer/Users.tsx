@@ -11,7 +11,7 @@ export async function login(username: string, password: string) {
   const publicUrl: string = "https://www.dogan.at/authServer/users/login";
   const localURl: string = "http://localhost:5000/users/login";
 
-  const response = await fetch(localURl, {
+  const response = await fetch(publicUrl, {
     method: "POST",
     body: JSON.stringify({
       name: username,

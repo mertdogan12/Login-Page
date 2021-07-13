@@ -1,5 +1,10 @@
 import "./style.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import Login from "./sides/login/Login";
 import NavBar from "./sides/nav-bar/NavBar";
 import Settings from "./sides/settings/Settings";
@@ -7,6 +12,7 @@ import Settings from "./sides/settings/Settings";
 function App() {
   return (
     <Router>
+      <Redirect to="/dashboard/start" />
       <Switch>
         <Route path="/auth">
           <Switch>

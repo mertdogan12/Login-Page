@@ -21,3 +21,11 @@ export function GetCookie(name: string): string {
 
   return "";
 }
+
+export function DeleteCookie(name: string) {
+  SetCookie(name, "-", 0);
+}
+
+export function CheckCookie(name: string): boolean {
+  return GetCookie(name) ? true : false;
+}

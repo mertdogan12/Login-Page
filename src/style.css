@@ -31,6 +31,11 @@ input {
   left: 0px;
 }
 
+.settings {
+  position: absolute;
+  top: 3.5vh;
+}
+
 html {
   background-color: #090c10;
 }

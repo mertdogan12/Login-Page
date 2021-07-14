@@ -10,19 +10,25 @@ let timeout: number;
 export default class Error extends React.Component<MyProps, MyState> {
   componentDidUpdate() {
     if (this.props.error) {
-      this.setVisibility("visible");
+      this.setVisibility(true);
 
       if (timeout) clearTimeout(timeout);
-      timeout = setTimeout(this.setVisibility, 5 * 1000, "hidden");
-    } else this.setVisibility("hidden");
+      timeout = setTimeout(this.setVisibility, 5 * 1000, false);
+    } else this.setVisibility(false);
   }
 
-  setVisibility(visibility: string) {
+  setVisibility(visibility: boolean) {
     const errorElements: HTMLCollection = document.getElementsByClassName(
       "error"
     ) as HTMLCollection;
 
-    (errorElements.item(0) as HTMLElement).style.visibility = visibility;
+    (errorElements.item(0) as HTMLElement).style.backgroundColor = visibility
+      ? "rgba(255, 0, 0, 100)"
+      : "rgba(255, 0, 0, 0)";
+
+    (errorElements.item(0) as HTMLElement).style.color = visibility
+      ? "rgba(255, 255, 255, 100)"
+      : "rgba(255, 255, 255, 0)";
   }
 
   render() {

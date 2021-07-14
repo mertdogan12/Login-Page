@@ -1,6 +1,7 @@
 import React from "react";
 import Error from "../../error/Error";
 import { GetCookie } from "../../../apis/Cookies";
+import { changePassword } from "../../../apis/authServer/Users";
 
 type myProps = {};
 type myStats = {
@@ -20,12 +21,12 @@ class ChangePassword extends React.Component<myProps, myStats> {
     this.changePassword = this.changePassword.bind(this);
   }
 
-  changePassword() {
+  async changePassword() {
     const oldPassword: HTMLInputElement = document.getElementById(
       "oldPassword"
     ) as HTMLInputElement;
     const newPassword: HTMLInputElement = document.getElementById(
-      "newPassword2"
+      "newPassword"
     ) as HTMLInputElement;
     const newPassword2: HTMLInputElement = document.getElementById(
       "newPassword2"
@@ -34,6 +35,22 @@ class ChangePassword extends React.Component<myProps, myStats> {
     if (!oldPassword.value || !newPassword.value || !newPassword2.value) {
       this.setState({
         error: "Input is empty",
+      });
+      return;
+    }
+
+    if (newPassword.value !== newPassword2.value) {
+      this.setState({
+        error: "Passwords are not equal",
+      });
+      return;
+    }
+
+    try {
+      await changePassword(oldPassword.value, newPassword.value, token);
+    } catch (error: any) {
+      this.setState({
+        error: error.name,
       });
     }
   }

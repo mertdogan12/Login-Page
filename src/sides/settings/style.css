@@ -1,0 +1,33 @@
+#sidebar {
+  background-color: #0d1117;
+  border-right: 2px solid #30363d;
+
+  border-radius: 0px;
+
+  height: 96.3vh;
+  width: 17vw;
+  position: absolute;
+
+  padding: 0px;
+  margin: 0px;
+}
+
+.settingslink {
+  text-decoration: none;
+  color: #58a6ff;
+  width: 17vw;
+  display: block;
+}
+
+li {
+  padding: 0.5vh 3vw 0.5vh 1vw;
+}
+
+li:hover {
+  background-color: #21262d;
+}
+
+.settingselemtent {
+  position: absolute;
+  left: calc(17vw + 2px);
+}

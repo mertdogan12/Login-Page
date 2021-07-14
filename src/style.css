@@ -3,6 +3,11 @@ button {
   border-radius: 3px;
 }
 
+h1,
+p {
+  color: white;
+}
+
 div,
 input {
   border-radius: 3px;
@@ -33,7 +38,9 @@ input {
 
 .settings {
   position: absolute;
-  top: 3.5vh;
+  top: 3.7vh;
+  height: 96.3vh;
+  width: 100vw;
 }
 
 html {

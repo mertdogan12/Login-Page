@@ -12,8 +12,10 @@ import Settings from "./sides/settings/Settings";
 function App() {
   return (
     <Router>
-      <Redirect to="/dashboard/start" />
       <Switch>
+        <Route exact path="/">
+          <Redirect to="/dashboard/start" />
+        </Route>
         <Route path="/auth">
           <Switch>
             <Route path="*/login">

@@ -13,7 +13,7 @@ export default function NavBar() {
         <Link className="link" to="/auth/login" onClick={logout}>
           Logout
         </Link>
-        <Link className="link" to="/dashboard/settings">
+        <Link className="link" to="/dashboard/settings/usersettings">
           Settings
         </Link>
       </div>

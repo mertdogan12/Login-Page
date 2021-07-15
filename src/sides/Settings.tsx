@@ -6,8 +6,7 @@ import {
   Switch,
   Redirect,
 } from "react-router-dom";
-import { CheckCookie } from "../../apis/Cookies";
-import "./style.css";
+import { CheckCookie } from "../apis/Cookies";
 import Usersettings from "./usersettings/Usersettings";
 
 function Settings() {

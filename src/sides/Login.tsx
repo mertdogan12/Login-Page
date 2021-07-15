@@ -1,9 +1,8 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import { SetCookie } from "../../apis/Cookies";
-import Error from "../error/Error";
-import { login } from "../../apis/authServer/Users";
-import "./style.css";
+import { SetCookie } from "../apis/Cookies";
+import Error from "./Error";
+import { login } from "../apis/authServer/Users";
 import { History } from "history";
 
 type MyProps = {
@@ -42,7 +41,7 @@ class Login extends React.Component<MyProps, MyState> {
       SetCookie("jwttoken", token, 7);
 
       this.props.history.push("/dashboard/start");
-    } catch (error) {
+    } catch (error: any) {
       this.setState({
         error: error.name,
       });

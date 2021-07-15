@@ -1,7 +1,7 @@
 import React from "react";
-import Error from "../../error/Error";
-import { GetCookie } from "../../../apis/Cookies";
-import { changePassword } from "../../../apis/authServer/Users";
+import Error from "../Error";
+import { GetCookie } from "../../apis/Cookies";
+import { changePassword } from "../../apis/authServer/Users";
 
 type myProps = {};
 type myStats = {

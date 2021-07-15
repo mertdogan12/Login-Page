@@ -1,6 +1,6 @@
 FROM node:latest
 
-WORKDIR ~/Login-Page
+WORKDIR /home/mert/Login-Page
 
 COPY package*.json ./
 

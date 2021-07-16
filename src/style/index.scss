@@ -1,9 +1,11 @@
+// Overall style
 button {
   background-color: #238636;
   border-radius: 3px;
 }
 
-h1 {
+h1,
+p {
   color: white;
 }
 
@@ -12,17 +14,19 @@ input {
   border-radius: 3px;
 }
 
-.outside {
+// Login
+#outside {
   width: 100vw;
   height: 100vh;
 }
 
-.login {
+#login {
   position: absolute;
   left: 38.5vw;
   top: 20vh;
 }
 
+// Error
 .error {
   position: absolute;
   right: 1vw;

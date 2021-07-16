@@ -1,5 +1,5 @@
 /** Form */
-.login {
+#login {
   width: 23vw;
   height: 41vh;
 
@@ -8,8 +8,8 @@
 }
 
 /** Input, Button */
-input,
-button {
+.loginInput,
+.loginButton {
   margin-top: 2vh;
   height: 5vh;
 }
@@ -18,7 +18,7 @@ button {
   margin-top: 5vh;
 }
 
-input {
+.loginInput {
   width: 19vw;
   margin-right: 1.75vw;
   margin-left: 1.75vw;
@@ -35,12 +35,12 @@ input {
   transition: box-shadow 0.25s ease-in-out;
 }
 
-input:hover {
+.loginInput:hover {
   box-shadow: 0px 10px 20px -15px rgba(0, 0, 0, 0.67),
     inset 0px 0px 23px -12px #000000;
 }
 
-button {
+.loginButton {
   box-shadow: 0px 12px 12px -30px rgba(0, 0, 0, 0.67);
 
   width: 9vw;
@@ -50,7 +50,7 @@ button {
   transition: background-color 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
 }
 
-button:hover {
+.loginButton:hover {
   background-color: #378bde;
   box-shadow: 0px 10px 20px -15px rgba(0, 0, 0, 0.67);
 }

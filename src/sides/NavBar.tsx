@@ -1,6 +1,5 @@
-import "./style.css";
 import { Link } from "react-router-dom";
-import { CheckCookie, DeleteCookie } from "../../apis/Cookies";
+import { CheckCookie, DeleteCookie } from "../apis/Cookies";
 
 export default function NavBar() {
   function logout() {

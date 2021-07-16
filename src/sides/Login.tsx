@@ -1,9 +1,8 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import { SetCookie } from "../../apis/Cookies";
-import Error from "../error/Error";
-import { login } from "../../apis/authServer/Users";
-import "./style.css";
+import { SetCookie } from "../apis/Cookies";
+import Error from "./Error";
+import { login } from "../apis/authServer/Users";
 import { History } from "history";
 
 type MyProps = {
@@ -42,7 +41,7 @@ class Login extends React.Component<MyProps, MyState> {
       SetCookie("jwttoken", token, 7);
 
       this.props.history.push("/dashboard/start");
-    } catch (error) {
+    } catch (error: any) {
       this.setState({
         error: error.name,
       });
@@ -63,14 +62,28 @@ class Login extends React.Component<MyProps, MyState> {
 
   render() {
     return (
-      <div className="outside">
+      <div id="outside">
         <Error error={this.state.error} />
-        <div className="login" onKeyDown={this.onKeyDown}>
-          <input id="username" placeholder="Username" type="text" />
-          <input id="password" placeholder="Password" type="password" />
-          <button onClick={this.onLoginClick}>Login</button>
+        <div id="login" onKeyDown={this.onKeyDown}>
+          <input
+            className="loginInput"
+            id="username"
+            placeholder="Username"
+            type="text"
+          />
+          <input
+            className="loginInput"
+            id="password"
+            placeholder="Password"
+            type="password"
+          />
+          <button className="loginButton" onClick={this.onLoginClick}>
+            Login
+          </button>
           <div id="seperator">OR</div>
-          <button id="register">Register</button>
+          <button className="loginButton" id="register">
+            Register
+          </button>
         </div>
       </div>
     );

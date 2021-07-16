@@ -1,13 +1,13 @@
-import "./style.css";
+import "./App.scss";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
 } from "react-router-dom";
-import Login from "./sides/login/Login";
-import NavBar from "./sides/nav-bar/NavBar";
-import Settings from "./sides/settings/Settings";
+import Login from "./sides/Login";
+import NavBar from "./sides/NavBar";
+import Settings from "./sides/Settings";
 
 function App() {
   return (

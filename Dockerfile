@@ -1,7 +1,13 @@
-FROM node:latest
+FROM node as build-deps
+WORKDIR /usr/src/app
+COPY package.json ./
+RUN npm install
+COPY . ./
+RUN npm run build
 
-WORKDIR /app
-
-EXPOSE 3000
-
-CMD ["npm", "start"]
+FROM nginx:latest
+COPY --from=build-deps /usr/src/app/build /usr/share/nginx/html
+RUN rm /etc/nginx/conf.d/default.conf
+COPY ./nginx/nginx.conf /etc/nginx/conf.d
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]

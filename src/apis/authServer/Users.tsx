@@ -1,6 +1,5 @@
 import fetch from "node-fetch";
 
-const publicUrl: string = "https://www.dogan.at/authServer/";
 const localURl: string = "http://localhost:5000/";
 
 export async function login(username: string, password: string) {
@@ -11,7 +10,7 @@ export async function login(username: string, password: string) {
     throw error;
   }
 
-  const response = await fetch(localURl + "users/login", {
+  const response = await fetch("/authServer/users/login", {
     method: "POST",
     body: JSON.stringify({
       name: username,
@@ -46,7 +45,7 @@ export async function changePassword(
     throw error;
   }
 
-  const response = await fetch(localURl + "users/changePassword", {
+  const response = await fetch("/authServer/users/changePassword", {
     method: "POST",
     body: JSON.stringify({
       oldPassword: oldPassword,

@@ -1,3 +1,4 @@
+// Sidebar
 #sidebar {
   background-color: #0d1117;
   border-right: 2px solid #30363d;
@@ -5,7 +6,7 @@
   border-radius: 0px;
 
   height: 96.3vh;
-  width: 17vw;
+  width: 10vw;
   position: absolute;
 
   padding: 0px;
@@ -15,19 +16,54 @@
 .settingslink {
   text-decoration: none;
   color: #58a6ff;
-  width: 17vw;
+  width: 10vw;
   display: block;
+
+  font-size: 2vh;
 }
 
 li {
   padding: 0.5vh 3vw 0.5vh 1vw;
+
+  transition: background-color 0.25s ease-in-out;
 }
 
 li:hover {
   background-color: #21262d;
 }
 
+// Overall Settings
+.header {
+  font-size: 24px;
+  margin-left: 3vw;
+}
+
+// ChangePassword
 .settingselemtent {
   position: absolute;
-  left: calc(17vw + 2px);
+  left: calc(10vw + 2px);
+}
+
+.settingsButtons {
+  box-shadow: 0px 12px 12px -30px rgba(0, 0, 0, 0.67);
+  border: none;
+  transition: background-color 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
+
+  font-size: 1.5vh;
+  margin: 2vh 0px 0px 3vw;
+}
+
+.settingsButtons:hover {
+  background-color: #378bde;
+  box-shadow: 0px 10px 20px -15px rgba(0, 0, 0, 0.67);
+}
+
+.settingsP {
+  margin: 1vh 0px 0px 3vw;
+  font-size: 1.5vh;
+}
+
+.settingsInput {
+  float: right;
+  margin-left: 3vw;
 }

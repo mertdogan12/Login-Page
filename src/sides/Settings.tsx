@@ -15,7 +15,7 @@ function Settings() {
   if (!CheckCookie("jwttoken")) history.push("/auth/login");
 
   return (
-    <div className="settings">
+    <div id="settings">
       <Router>
         <ul id="sidebar">
           <li>

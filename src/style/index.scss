@@ -9,7 +9,8 @@ button {
 }
 
 h1,
-p {
+p,
+h2 {
   color: white;
 }
 
@@ -44,7 +45,8 @@ input {
   top: 1vh;
 }
 
-.settings {
+// Settings
+#settings {
   position: absolute;
   top: 3.7vh;
   height: 96.3vh;

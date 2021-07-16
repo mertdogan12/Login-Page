@@ -1,4 +1,8 @@
 // Overall style
+html {
+  background-color: #090c10;
+}
+
 button {
   background-color: #238636;
   border-radius: 3px;
@@ -34,20 +38,15 @@ input {
 }
 
 // Error
-.error {
+#error {
   position: absolute;
   right: 1vw;
   top: 1vh;
 }
-
 
 .settings {
   position: absolute;
   top: 3.7vh;
   height: 96.3vh;
   width: 100vw;
-}
-
-html {
-  background-color: #090c10;
 }

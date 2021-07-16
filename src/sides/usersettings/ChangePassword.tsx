@@ -58,14 +58,23 @@ class ChangePassword extends React.Component<myProps, myStats> {
   render() {
     return (
       <div>
+        <h2 className="header">Change Password</h2>
         <Error error={this.state.error} />
-        <p>Old Password</p>
-        <input id="oldPassword" type="password" />
-        <p>New Password</p>
-        <input id="newPassword" type="password" />
-        <p>New Password</p>
-        <input id="newPassword2" type="password" />
-        <button onClick={this.changePassword}>Change Password</button>
+        <p className="settingsP">
+          Old Password
+          <input className="settingsInput" id="oldPassword" type="password" />
+        </p>
+        <p className="settingsP">
+          New Password
+          <input className="settingsInput" id="newPassword" type="password" />
+        </p>
+        <p className="settingsP">
+          New Password
+          <input className="settingsInput" id="newPassword2" type="password" />
+        </p>
+        <button className="settingsButtons" onClick={this.changePassword}>
+          Change Password
+        </button>
       </div>
     );
   }

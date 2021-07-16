@@ -8,22 +8,22 @@ export default function NavBar() {
 
   if (CheckCookie("jwttoken")) {
     return (
-      <div className="navbar">
-        <Link className="link" to="/auth/login" onClick={logout}>
+      <div id="navbar">
+        <Link className="navbarLink" to="/auth/login" onClick={logout}>
           Logout
         </Link>
-        <Link className="link" to="/dashboard/settings/usersettings">
+        <Link className="navbarLink" to="/dashboard/settings/usersettings">
           Settings
         </Link>
       </div>
     );
   } else {
     return (
-      <div className="navbar">
-        <Link className="link" to="/auth/login">
+      <div id="navbar">
+        <Link className="navbarLink" to="/auth/login">
           Login
         </Link>
-        <Link className="link" to="/auth/register">
+        <Link className="navbarLink" to="/auth/register">
           Register
         </Link>
       </div>

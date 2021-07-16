@@ -17,23 +17,26 @@ export default class Error extends React.Component<MyProps, MyState> {
   }
 
   setVisibility(visibility: boolean) {
-    const errorElements: HTMLCollection = document.getElementsByClassName(
+    const errorElement: HTMLElement = document.getElementById(
       "error"
-    ) as HTMLCollection;
+    ) as HTMLElement;
+    const errorTextElement: HTMLElement = document.getElementById(
+      "errorText"
+    ) as HTMLElement;
 
-    (errorElements.item(0) as HTMLElement).style.backgroundColor = visibility
+    errorElement.style.backgroundColor = visibility
       ? "rgba(255, 0, 0, 100)"
       : "rgba(255, 0, 0, 0)";
 
-    (errorElements.item(0) as HTMLElement).style.color = visibility
+    errorTextElement.style.color = visibility
       ? "rgba(255, 255, 255, 100)"
       : "rgba(255, 255, 255, 0)";
   }
 
   render() {
     return (
-      <div className="error">
-        <p>{this.props.error}</p>
+      <div id="error">
+        <p id="errorText">{this.props.error}</p>
       </div>
     );
   }

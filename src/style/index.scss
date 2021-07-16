@@ -26,6 +26,13 @@ input {
   top: 20vh;
 }
 
+//NavBar
+#navbar {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
 // Error
 .error {
   position: absolute;
@@ -33,11 +40,6 @@ input {
   top: 1vh;
 }
 
-.navbar {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-}
 
 .settings {
   position: absolute;

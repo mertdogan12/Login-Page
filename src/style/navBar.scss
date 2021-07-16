@@ -1,4 +1,4 @@
-.navbar {
+#navbar {
   background-color: #161b22;
 
   border-radius: 0px;
@@ -6,7 +6,7 @@
   width: 100vw;
 }
 
-.link {
+.navbarLink {
   color: white;
   text-decoration: none;
   border-radius: 0px;
@@ -19,6 +19,6 @@
   float: right;
 }
 
-.link:hover {
+.navbarLink:hover {
   background-color: #1f6feb;
 }

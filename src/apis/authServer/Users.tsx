@@ -10,7 +10,7 @@ export async function login(username: string, password: string) {
     throw error;
   }
 
-  const response = await fetch("/authServer/users/login", {
+  const response = await fetch(localURl + "users/login", {
     method: "POST",
     body: JSON.stringify({
       name: username,
@@ -45,7 +45,7 @@ export async function changePassword(
     throw error;
   }
 
-  const response = await fetch("/authServer/users/changePassword", {
+  const response = await fetch(localURl + "users/changePassword", {
     method: "POST",
     body: JSON.stringify({
       oldPassword: oldPassword,

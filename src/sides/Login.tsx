@@ -42,8 +42,9 @@ class Login extends React.Component<MyProps, MyState> {
 
       this.props.history.push("/dashboard/start");
     } catch (error: any) {
-      this.setState({
-        error: error.name,
+      this.props.history.push({
+        pathname: "/auth/login",
+        search: `?error=${error.name}`,
       });
 
       return;
@@ -62,29 +63,26 @@ class Login extends React.Component<MyProps, MyState> {
 
   render() {
     return (
-      <div id="outside">
-        <Error error={this.state.error} />
-        <div id="login" onKeyDown={this.onKeyDown}>
-          <input
-            className="loginInput"
-            id="username"
-            placeholder="Username"
-            type="text"
-          />
-          <input
-            className="loginInput"
-            id="password"
-            placeholder="Password"
-            type="password"
-          />
-          <button className="loginButton" onClick={this.onLoginClick}>
-            Login
-          </button>
-          <div id="seperator">OR</div>
-          <button className="loginButton" id="register">
-            Register
-          </button>
-        </div>
+      <div id="login" onKeyDown={this.onKeyDown}>
+        <input
+          className="loginInput"
+          id="username"
+          placeholder="Username"
+          type="text"
+        />
+        <input
+          className="loginInput"
+          id="password"
+          placeholder="Password"
+          type="password"
+        />
+        <button className="loginButton" onClick={this.onLoginClick}>
+          Login
+        </button>
+        <div id="seperator">OR</div>
+        <button className="loginButton" id="register">
+          Register
+        </button>
       </div>
     );
   }

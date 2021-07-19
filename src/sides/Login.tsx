@@ -1,7 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import { SetCookie } from "../apis/Cookies";
-import Error from "./Error";
 import { login } from "../apis/authServer/Users";
 import { History } from "history";
 

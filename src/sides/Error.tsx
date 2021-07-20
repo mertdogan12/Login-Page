@@ -1,22 +1,22 @@
-import React from "react";
+import { useEffect } from "react";
 
 type MyProps = {
   error: string;
 };
-type MyState = {};
+
 let timeout: number;
 
-export default class Error extends React.Component<MyProps, MyState> {
-  componentDidUpdate() {
-    if (this.props.error) {
-      this.setVisibility(true);
+function Error(props: MyProps) {
+  useEffect(() => {
+    if (props.error) {
+      setVisibility(true);
 
       if (timeout) clearTimeout(timeout);
-      timeout = setTimeout(this.setVisibility, 5 * 1000, false);
-    } else this.setVisibility(false);
-  }
+      timeout = setTimeout(setVisibility, 5 * 1000, false);
+    } else setVisibility(false);
+  });
 
-  setVisibility(visibility: boolean) {
+  function setVisibility(visibility: boolean) {
     const errorElement: HTMLElement = document.getElementById(
       "error"
     ) as HTMLElement;
@@ -33,11 +33,11 @@ export default class Error extends React.Component<MyProps, MyState> {
       : "rgba(255, 255, 255, 0)";
   }
 
-  render() {
-    return (
-      <div id="error">
-        <p id="errorText">{this.props.error}</p>
-      </div>
-    );
-  }
+  return (
+    <div id="error">
+      <p id="errorText">{props.error}</p>
+    </div>
+  );
 }
+
+export default Error;

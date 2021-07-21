@@ -57,7 +57,7 @@ class ChangePassword extends React.Component<myProps, myStats> {
 
   render() {
     return (
-      <div>
+      <div id="changePassword">
         <h2 className="header">Change Password</h2>
         <Error error={this.state.error} />
         <p className="settingsP">

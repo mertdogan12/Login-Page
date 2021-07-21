@@ -42,6 +42,7 @@ li:hover {
 .settingselemtent {
   position: absolute;
   left: calc(10vw + 2px);
+  width: calc(90vw - 2px);
 }
 
 .settingsButtons {
@@ -59,7 +60,7 @@ li:hover {
 }
 
 .settingsP {
-  margin: 1vh 0px 0px 3vw;
+  margin: 1vh 72vw 0px 3vw;
   font-size: 1.5vh;
 }
 

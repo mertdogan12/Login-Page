@@ -1,9 +1,9 @@
 import React from "react";
-import Error from "./Error";
 import { withRouter } from "react-router-dom";
 import { SetCookie } from "../apis/Cookies";
 import { login } from "../apis/authServer/Users";
 import { History } from "history";
+import Alert from "./Alert";
 
 type MyProps = {
   match: any;
@@ -59,7 +59,7 @@ class Login extends React.Component<MyProps, MyState> {
   render() {
     return (
       <div id="loginPage">
-        <Error error={this.state.error} />
+        <Alert color="255;0;0" alert={this.state.error} />
         <div id="login" onKeyDown={this.onKeyDown}>
           <input
             className="loginInput"

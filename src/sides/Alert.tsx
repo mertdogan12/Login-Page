@@ -1,14 +1,15 @@
 import { useEffect } from "react";
 
 type MyProps = {
-  error: string;
+  alert: string;
+  color: string;
 };
 
 let timeout: number;
 
-function Error(props: MyProps) {
+function Alert(props: MyProps) {
   useEffect(() => {
-    if (props.error) {
+    if (props.alert) {
       setVisibility(true);
 
       if (timeout) clearTimeout(timeout);
@@ -24,20 +25,22 @@ function Error(props: MyProps) {
       "errorText"
     ) as HTMLElement;
 
+    const color: string[] = props.color.split(";");
+
     errorElement.style.backgroundColor = visibility
-      ? "rgba(255, 0, 0, 100)"
-      : "rgba(255, 0, 0, 0)";
+      ? `rgba(${color[0]}, ${color[1]}, ${color[2]}, 255)`
+      : `rgba(${color[0]}, ${color[1]}, ${color[2]}, 0)`;
 
     errorTextElement.style.color = visibility
-      ? "rgba(255, 255, 255, 100)"
-      : "rgba(255, 255, 255, 0)";
+      ? `rgba(255, 255, 255, 255)`
+      : `rgba(255, 255, 255, 0)`;
   }
 
   return (
     <div id="error">
-      <p id="errorText">{props.error}</p>
+      <p id="errorText">{props.alert}</p>
     </div>
   );
 }
 
-export default Error;
+export default Alert;

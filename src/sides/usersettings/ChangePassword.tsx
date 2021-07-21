@@ -1,7 +1,7 @@
 import React from "react";
-import Error from "../Error";
 import { GetCookie } from "../../apis/Cookies";
 import { changePassword } from "../../apis/authServer/Users";
+import Alert from "../Alert";
 
 type myProps = {};
 type myStats = {
@@ -59,7 +59,7 @@ class ChangePassword extends React.Component<myProps, myStats> {
     return (
       <div id="changePassword">
         <h2 className="header">Change Password</h2>
-        <Error error={this.state.error} />
+        <Alert color="255;0;0" alert={this.state.error} />
         <p className="settingsP">
           Old Password
           <input className="settingsInput" id="oldPassword" type="password" />

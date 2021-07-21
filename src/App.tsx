@@ -8,7 +8,6 @@ import {
 import Login from "./sides/Login";
 import NavBar from "./sides/NavBar";
 import Settings from "./sides/Settings";
-import Error from "./sides/Error";
 
 function App() {
   return (

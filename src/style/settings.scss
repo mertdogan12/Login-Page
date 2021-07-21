@@ -38,13 +38,13 @@ li:hover {
   margin-left: 3vw;
 }
 
-// ChangePassword
 .settingselemtent {
   position: absolute;
   left: calc(10vw + 2px);
   width: calc(90vw - 2px);
 }
 
+// ChangePassword
 .settingsButtons {
   box-shadow: 0px 12px 12px -30px rgba(0, 0, 0, 0.67);
   border: none;
@@ -67,4 +67,9 @@ li:hover {
 .settingsInput {
   float: right;
   margin-left: 3vw;
+}
+
+// ChangeUsername
+#changeUsername {
+  top: 26vh;
 }

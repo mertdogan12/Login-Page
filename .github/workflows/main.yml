@@ -32,4 +32,4 @@ jobs:
         run: npm install
         
       - name: run react
-        run: npm start
+        run: npm run build

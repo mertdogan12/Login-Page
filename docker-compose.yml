@@ -30,6 +30,8 @@ services:
     image: mertdogan/login-page:dev
     container_name: loginpage
     restart: always
+    environment:
+      - REACT_APP_AUTHSERVER_URL=http://192.168.178.27:5000/
     volumes:
       - /home/mert/Login-Page:/app
     ports:

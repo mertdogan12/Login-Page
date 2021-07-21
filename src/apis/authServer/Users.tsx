@@ -1,5 +1,7 @@
 import fetch from "node-fetch";
 
+let authServerUrl: string = process.env.REACT_APP_AUTHSERVER_URL as string;
+
 export async function login(username: string, password: string) {
   if (!username || !password) {
     let error: Error = new Error();
@@ -8,7 +10,7 @@ export async function login(username: string, password: string) {
     throw error;
   }
 
-  const response = await fetch("/authServer/users/login", {
+  const response = await fetch(authServerUrl + "users/login", {
     method: "POST",
     body: JSON.stringify({
       name: username,
@@ -43,7 +45,7 @@ export async function changePassword(
     throw error;
   }
 
-  const response = await fetch("/authServer/users/changePassword", {
+  const response = await fetch(authServerUrl + "users/changePassword", {
     method: "POST",
     body: JSON.stringify({
       oldPassword: oldPassword,

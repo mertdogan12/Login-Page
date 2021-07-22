@@ -26,7 +26,7 @@ function ChangeUsername() {
   return (
     <div id="changeUsername">
       <h2 className="header">Change Username</h2>
-      <Alert color="255;0;0" alert={error} />
+      <Alert id="changeUsernameAlert" color="255;0;0" alert={error} />
       <label className="settingsLabel">New Username</label>
       <input className="settingsInput" id="newUsername" />
       <br />

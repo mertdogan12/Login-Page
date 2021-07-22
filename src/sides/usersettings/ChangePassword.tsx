@@ -53,7 +53,7 @@ function ChangePassword() {
   return (
     <div id="changePassword">
       <h2 className="header">Change Password</h2>
-      <Alert color={color} alert={alert} />
+      <Alert id="changePasswordAlert" color={color} alert={alert} />
       <label className="settingsLabel">Old Password </label>
       <input className="settingsInput" id="oldPassword" type="password" />
       <br />

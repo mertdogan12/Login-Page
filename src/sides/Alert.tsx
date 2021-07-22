@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-
 type MyProps = {
   alert: string;
   color: string;
@@ -9,24 +7,23 @@ type MyProps = {
 let timers: Map<string, number> = new Map<string, number>();
 
 function Alert(props: MyProps) {
-  useEffect(() => {
-    if (props.alert) {
-      setVisibility(true);
 
-      if (timers.get(props.id)) clearTimeout(timers.get(props.id));
-      timers.set(props.id, setTimeout(setVisibility, 5 * 1000, false));
-    } else setVisibility(false);
-  }, [props.alert, props.id]);
+  if (props.alert) {
+    setVisibility(true);
+
+    if (timers.get(props.id)) clearTimeout(timers.get(props.id));
+    timers.set(props.id, setTimeout(setVisibility, 5 * 1000, false));
+  } else setVisibility(false);
 
   function setVisibility(visibility: boolean) {
-    const alertElement: HTMLElement = document.getElementById(
-      props.id
-    ) as HTMLElement;
-    const alertTextElement: HTMLElement = document.getElementById(
+    const alertElement: HTMLElement | null = document.getElementById(props.id);
+    const alertTextElement: HTMLElement | null = document.getElementById(
       props.id + "Text"
-    ) as HTMLElement;
+    );
 
     const color: string[] = props.color.split(";");
+
+    if (alertElement == null || alertTextElement == null) return;
 
     if (visibility) {
       alertElement.style.visibility = "visible";

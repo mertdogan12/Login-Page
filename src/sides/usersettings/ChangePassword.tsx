@@ -1,27 +1,16 @@
-import React from "react";
 import { GetCookie } from "../../apis/Cookies";
+import { useState } from "react";
 import { changePassword } from "../../apis/authServer/Users";
 import Alert from "../Alert";
 
-type myProps = {};
-type myStats = {
-  error: string;
-};
 let token: string;
 
-class ChangePassword extends React.Component<myProps, myStats> {
-  constructor(props: myProps) {
-    super(props);
-    token = GetCookie("jwttoken");
+function ChangePassword() {
+  token = GetCookie("jwttoken");
+  let [alert, setAlert] = useState("");
+  let [color, setColor] = useState("255;0;0");
 
-    this.state = {
-      error: "",
-    };
-
-    this.changePassword = this.changePassword.bind(this);
-  }
-
-  async changePassword() {
+  async function onButtonClick() {
     const oldPassword: HTMLInputElement = document.getElementById(
       "oldPassword"
     ) as HTMLInputElement;
@@ -33,48 +22,52 @@ class ChangePassword extends React.Component<myProps, myStats> {
     ) as HTMLInputElement;
 
     if (!oldPassword.value || !newPassword.value || !newPassword2.value) {
-      this.setState({
-        error: "Input is empty",
-      });
+      setColor("255;0;0");
+      setAlert("Input is empty");
+
       return;
     }
 
     if (newPassword.value !== newPassword2.value) {
-      this.setState({
-        error: "Passwords are not equal",
-      });
+      setColor("255;0;0");
+      setAlert("Passwords are equal");
+
       return;
     }
 
     try {
       await changePassword(oldPassword.value, newPassword.value, token);
+
+      setColor("179;146;0");
+      setAlert("Password changed");
+
+      return;
     } catch (error: any) {
-      this.setState({
-        error: error.name,
-      });
+      setColor("255;0;0");
+      setAlert("Passwords are equal");
+
+      return;
     }
   }
 
-  render() {
-    return (
-      <div id="changePassword">
-        <h2 className="header">Change Password</h2>
-        <Alert color="255;0;0" alert={this.state.error} />
-        <label className="settingsLabel">Old Password </label>
-        <input className="settingsInput" id="oldPassword" type="password" />
-        <br />
-        <label className="settingsLabel">New Password</label>
-        <input className="settingsInput" id="newPassword" type="password" />
-        <br />
-        <label className="settingsLabel">New Password</label>
-        <input className="settingsInput" id="newPassword2" type="password" />
-        <br />
-        <button className="settingsButtons" onClick={this.changePassword}>
-          Change Password
-        </button>
-      </div>
-    );
-  }
+  return (
+    <div id="changePassword">
+      <h2 className="header">Change Password</h2>
+      <Alert color={color} alert={alert} />
+      <label className="settingsLabel">Old Password </label>
+      <input className="settingsInput" id="oldPassword" type="password" />
+      <br />
+      <label className="settingsLabel">New Password</label>
+      <input className="settingsInput" id="newPassword" type="password" />
+      <br />
+      <label className="settingsLabel">New Password</label>
+      <input className="settingsInput" id="newPassword2" type="password" />
+      <br />
+      <button className="settingsButtons" onClick={onButtonClick}>
+        Change Password
+      </button>
+    </div>
+  );
 }
 
 export default ChangePassword;

@@ -29,10 +29,10 @@ function Alert(props: MyProps) {
     const color: string[] = props.color.split(";");
 
     if (visibility) {
-      alertElement.style.display = "block";
+      alertElement.style.visibility = "visible";
     } else
       setTimeout(
-        (element: HTMLElement) => (element.style.display = "none"),
+        (element: HTMLElement) => (element.style.visibility = "hidden"),
         1000,
         alertElement
       );

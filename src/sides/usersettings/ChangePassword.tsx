@@ -60,18 +60,15 @@ class ChangePassword extends React.Component<myProps, myStats> {
       <div id="changePassword">
         <h2 className="header">Change Password</h2>
         <Alert color="255;0;0" alert={this.state.error} />
-        <p className="settingsP">
-          Old Password
-          <input className="settingsInput" id="oldPassword" type="password" />
-        </p>
-        <p className="settingsP">
-          New Password
-          <input className="settingsInput" id="newPassword" type="password" />
-        </p>
-        <p className="settingsP">
-          New Password
-          <input className="settingsInput" id="newPassword2" type="password" />
-        </p>
+        <label className="settingsLabel">Old Password </label>
+        <input className="settingsInput" id="oldPassword" type="password" />
+        <br />
+        <label className="settingsLabel">New Password</label>
+        <input className="settingsInput" id="newPassword" type="password" />
+        <br />
+        <label className="settingsLabel">New Password</label>
+        <input className="settingsInput" id="newPassword2" type="password" />
+        <br />
         <button className="settingsButtons" onClick={this.changePassword}>
           Change Password
         </button>

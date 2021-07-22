@@ -24,13 +24,12 @@ function ChangeUsername() {
   }
 
   return (
-    <div className="settingselemtent" id="changeUsername">
+    <div id="changeUsername">
       <h2 className="header">Change Username</h2>
       <Alert color="255;0;0" alert={error} />
-      <p className="settingsP">
-        New Username
-        <input className="settingsInput" id="newUsername" />
-      </p>
+      <label className="settingsLabel">New Username</label>
+      <input className="settingsInput" id="newUsername" />
+      <br />
       <button className="settingsButtons" onClick={onButtonClick}>
         Change Username
       </button>

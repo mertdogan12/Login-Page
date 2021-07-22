@@ -16,7 +16,7 @@ function Alert(props: MyProps) {
       if (timers.get(props.id)) clearTimeout(timers.get(props.id));
       timers.set(props.id, setTimeout(setVisibility, 5 * 1000, false));
     } else setVisibility(false);
-  });
+  }, [props.alert, props.id]);
 
   function setVisibility(visibility: boolean) {
     const alertElement: HTMLElement = document.getElementById(
@@ -28,14 +28,6 @@ function Alert(props: MyProps) {
 
     const color: string[] = props.color.split(";");
 
-    alertElement.style.backgroundColor = visibility
-      ? `rgba(${color[0]}, ${color[1]}, ${color[2]}, 255)`
-      : `rgba(${color[0]}, ${color[1]}, ${color[2]}, 0)`;
-
-    alertTextElement.style.color = visibility
-      ? `rgba(255, 255, 255, 255)`
-      : `rgba(255, 255, 255, 0)`;
-
     if (visibility) {
       alertElement.style.display = "block";
     } else
@@ -44,6 +36,14 @@ function Alert(props: MyProps) {
         1000,
         alertElement
       );
+
+    alertElement.style.backgroundColor = visibility
+      ? `rgba(${color[0]}, ${color[1]}, ${color[2]}, 255)`
+      : `rgba(${color[0]}, ${color[1]}, ${color[2]}, 0)`;
+
+    alertTextElement.style.color = visibility
+      ? `rgba(255, 255, 255, 255)`
+      : `rgba(255, 255, 255, 0)`;
   }
 
   return (

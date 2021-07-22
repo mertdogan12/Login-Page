@@ -30,7 +30,7 @@ function ChangePassword() {
 
     if (newPassword.value !== newPassword2.value) {
       setColor("255;0;0");
-      setAlert("Passwords are equal");
+      setAlert("Passwords are not equal");
 
       return;
     }
@@ -44,7 +44,7 @@ function ChangePassword() {
       return;
     } catch (error: any) {
       setColor("255;0;0");
-      setAlert("Passwords are equal");
+      setAlert(error.name);
 
       return;
     }

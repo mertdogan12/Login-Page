@@ -1,14 +1,13 @@
 import { GetCookie } from "../../apis/Cookies";
-import { useState } from "react";
+import { useState, KeyboardEvent } from "react";
 import { changePassword } from "../../apis/authServer/Users";
 import Alert from "../Alert";
 
-let token: string;
-
 function ChangePassword() {
-  token = GetCookie("jwttoken");
+  let token = GetCookie("jwttoken");
   let [alert, setAlert] = useState("");
   let [color, setColor] = useState("255;0;0");
+  let [count, setCount] = useState(0);
 
   async function onButtonClick() {
     const oldPassword: HTMLInputElement = document.getElementById(
@@ -22,36 +21,54 @@ function ChangePassword() {
     ) as HTMLInputElement;
 
     if (!oldPassword.value || !newPassword.value || !newPassword2.value) {
+      const errorMessage: string = "Input is empty";
       setColor("255;0;0");
-      setAlert("Input is empty");
+
+      if (alert === errorMessage) {
+        setCount(count + 1);
+      } else setAlert(errorMessage);
 
       return;
     }
 
     if (newPassword.value !== newPassword2.value) {
+      const errorMessage: string = "Passwords are not equal";
       setColor("255;0;0");
-      setAlert("Passwords are not equal");
+
+      if (alert === errorMessage) {
+        setCount(count + 1);
+      } else setAlert(errorMessage);
 
       return;
     }
 
     try {
+      const alertMessage: string = "Password successful changed";
       await changePassword(oldPassword.value, newPassword.value, token);
-
       setColor("179;146;0");
-      setAlert("Password changed");
+
+      if (alert === alertMessage) {
+        setCount(count + 1);
+      } else setAlert(alertMessage);
 
       return;
     } catch (error: any) {
       setColor("255;0;0");
-      setAlert(error.name);
+
+      if (alert === error.name) {
+        setCount(count + 1);
+      } else setAlert(error.name);
 
       return;
     }
   }
 
+  function onKeyDown(event: KeyboardEvent<HTMLDivElement>) {
+    if (event.key === "Enter") onButtonClick();
+  }
+
   return (
-    <div id="changePassword">
+    <div id="changePassword" onKeyDown={onKeyDown}>
       <h2 className="header">Change Password</h2>
       <Alert id="changePasswordAlert" color={color} alert={alert} />
       <label className="settingsLabel">Old Password </label>

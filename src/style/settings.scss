@@ -45,8 +45,18 @@ li:hover {
   height: 96.3vh;
 }
 
-.changePasswordAlert,
-.changeUsernameAlert {
+#changePasswordAlert,
+#changeUsernameAlert {
+  position: absolute;
+  right: 3vw;
+}
+
+#changePasswordAlert {
+  top: 2vh;
+}
+
+#changeUsernameAlert {
+  top: 20vh;
 }
 
 // ChangePassword
@@ -71,7 +81,7 @@ li:hover {
 .changePasswordAlert {
   position: absolute;
   right: 2vw;
-  top: 2vw;
+  top: 2vh;
 }
 
 // ChangeUsername

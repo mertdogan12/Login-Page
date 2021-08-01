@@ -1,27 +1,15 @@
-import React from "react";
 import { GetCookie } from "../../apis/Cookies";
+import { useState, KeyboardEvent } from "react";
 import { changePassword } from "../../apis/authServer/Users";
 import Alert from "../Alert";
 
-type myProps = {};
-type myStats = {
-  error: string;
-};
-let token: string;
+function ChangePassword() {
+  let token = GetCookie("jwttoken");
+  let [alert, setAlert] = useState("");
+  let [color, setColor] = useState("255;0;0");
+  let [count, setCount] = useState(0);
 
-class ChangePassword extends React.Component<myProps, myStats> {
-  constructor(props: myProps) {
-    super(props);
-    token = GetCookie("jwttoken");
-
-    this.state = {
-      error: "",
-    };
-
-    this.changePassword = this.changePassword.bind(this);
-  }
-
-  async changePassword() {
+  async function onButtonClick() {
     const oldPassword: HTMLInputElement = document.getElementById(
       "oldPassword"
     ) as HTMLInputElement;
@@ -33,51 +21,70 @@ class ChangePassword extends React.Component<myProps, myStats> {
     ) as HTMLInputElement;
 
     if (!oldPassword.value || !newPassword.value || !newPassword2.value) {
-      this.setState({
-        error: "Input is empty",
-      });
+      const errorMessage: string = "Input is empty";
+      setColor("255;0;0");
+
+      if (alert === errorMessage) {
+        setCount(count + 1);
+      } else setAlert(errorMessage);
+
       return;
     }
 
     if (newPassword.value !== newPassword2.value) {
-      this.setState({
-        error: "Passwords are not equal",
-      });
+      const errorMessage: string = "Passwords are not equal";
+      setColor("255;0;0");
+
+      if (alert === errorMessage) {
+        setCount(count + 1);
+      } else setAlert(errorMessage);
+
       return;
     }
 
     try {
+      const alertMessage: string = "Password successful changed";
       await changePassword(oldPassword.value, newPassword.value, token);
+      setColor("179;146;0");
+
+      if (alert === alertMessage) {
+        setCount(count + 1);
+      } else setAlert(alertMessage);
+
+      return;
     } catch (error: any) {
-      this.setState({
-        error: error.name,
-      });
+      setColor("255;0;0");
+
+      if (alert === error.name) {
+        setCount(count + 1);
+      } else setAlert(error.name);
+
+      return;
     }
   }
 
-  render() {
-    return (
-      <div id="changePassword">
-        <h2 className="header">Change Password</h2>
-        <Alert color="255;0;0" alert={this.state.error} />
-        <p className="settingsP">
-          Old Password
-          <input className="settingsInput" id="oldPassword" type="password" />
-        </p>
-        <p className="settingsP">
-          New Password
-          <input className="settingsInput" id="newPassword" type="password" />
-        </p>
-        <p className="settingsP">
-          New Password
-          <input className="settingsInput" id="newPassword2" type="password" />
-        </p>
-        <button className="settingsButtons" onClick={this.changePassword}>
-          Change Password
-        </button>
-      </div>
-    );
+  function onKeyDown(event: KeyboardEvent<HTMLDivElement>) {
+    if (event.key === "Enter") onButtonClick();
   }
+
+  return (
+    <div id="changePassword" onKeyDown={onKeyDown}>
+      <h2 className="header">Change Password</h2>
+      <Alert id="changePasswordAlert" color={color} alert={alert} />
+      <label className="settingsLabel">Old Password </label>
+      <input className="settingsInput" id="oldPassword" type="password" />
+      <br />
+      <label className="settingsLabel">New Password</label>
+      <input className="settingsInput" id="newPassword" type="password" />
+      <br />
+      <label className="settingsLabel">New Password</label>
+      <input className="settingsInput" id="newPassword2" type="password" />
+      <br />
+      <button className="settingsButtons" onClick={onButtonClick}>
+        Change Password
+      </button>
+    </div>
+  );
 }
 
 export default ChangePassword;

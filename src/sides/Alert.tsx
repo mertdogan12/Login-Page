@@ -1,44 +1,53 @@
-import { useEffect } from "react";
-
 type MyProps = {
   alert: string;
   color: string;
+  id: string;
 };
 
-let timeout: number;
+let timers: Map<string, number> = new Map<string, number>();
 
 function Alert(props: MyProps) {
-  useEffect(() => {
-    if (props.alert) {
-      setVisibility(true);
 
-      if (timeout) clearTimeout(timeout);
-      timeout = setTimeout(setVisibility, 5 * 1000, false);
-    } else setVisibility(false);
-  });
+  if (props.alert) {
+    setVisibility(true);
+
+    if (timers.get(props.id)) clearTimeout(timers.get(props.id));
+    timers.set(props.id, setTimeout(setVisibility, 5 * 1000, false));
+  } else setVisibility(false);
 
   function setVisibility(visibility: boolean) {
-    const errorElement: HTMLElement = document.getElementById(
-      "error"
-    ) as HTMLElement;
-    const errorTextElement: HTMLElement = document.getElementById(
-      "errorText"
-    ) as HTMLElement;
+    const alertElement: HTMLElement | null = document.getElementById(props.id);
+    const alertTextElement: HTMLElement | null = document.getElementById(
+      props.id + "Text"
+    );
 
     const color: string[] = props.color.split(";");
 
-    errorElement.style.backgroundColor = visibility
+    if (alertElement == null || alertTextElement == null) return;
+
+    if (visibility) {
+      alertElement.style.visibility = "visible";
+    } else
+      setTimeout(
+        (element: HTMLElement) => (element.style.visibility = "hidden"),
+        1000,
+        alertElement
+      );
+
+    alertElement.style.backgroundColor = visibility
       ? `rgba(${color[0]}, ${color[1]}, ${color[2]}, 255)`
       : `rgba(${color[0]}, ${color[1]}, ${color[2]}, 0)`;
 
-    errorTextElement.style.color = visibility
+    alertTextElement.style.color = visibility
       ? `rgba(255, 255, 255, 255)`
       : `rgba(255, 255, 255, 0)`;
   }
 
   return (
-    <div id="error">
-      <p id="errorText">{props.alert}</p>
+    <div className="alert" id={props.id}>
+      <p id={props.id + "Text"} className="alertText">
+        {props.alert}
+      </p>
     </div>
   );
 }

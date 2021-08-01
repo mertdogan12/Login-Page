@@ -59,7 +59,7 @@ class Login extends React.Component<MyProps, MyState> {
   render() {
     return (
       <div id="loginPage">
-        <Alert color="255;0;0" alert={this.state.error} />
+        <Alert id="loginAlert" color="255;0;0" alert={this.state.error} />
         <div id="login" onKeyDown={this.onKeyDown}>
           <input
             className="loginInput"

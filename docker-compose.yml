@@ -2,7 +2,7 @@ version: "3"
 
 services:
   authserver:
-    image: mertdogan/auth-server:1.4
+    image: mertdogan/auth-server:latest
     container_name: auth-server
     restart: always
     environment:

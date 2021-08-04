@@ -7,7 +7,7 @@ import { GetCookie } from "../../apis/Cookies";
 function Users() {
   let history = useHistory();
   let token = GetCookie("jwttoken");
-  let [text, setText] = useState("Loading");
+  let [text, setText] = useState(<div className="lds-dual-ring"></div>);
   let [users, setUsers] = useState(new Array<User>());
 
   const checkPermission = useCallback(async () => {
@@ -17,7 +17,7 @@ function Users() {
       )
         history.push("/dashboard/settings/usersettings");
 
-      setText("Hallo");
+      setText(<div></div>);
     } catch (e) {
       history.push("/dashboard/settings/usersettings");
     }
@@ -33,8 +33,8 @@ function Users() {
   }, [checkPermission, getUsers]);
 
   return (
-    <div>
-      <p>{text}</p>
+    <div className="settingselemtent">
+      {text}
       {users.map((obj) => {
         return <p key={obj.id}>{obj.name}</p>;
       })}

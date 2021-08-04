@@ -27,7 +27,7 @@ function Settings() {
           <details>
             <summary>Adminsettings</summary>
             <Link
-              className="settingslink2"
+              className="adminsettings"
               to="/dashboard/settings/adminsettings/users"
             >
               User Settings
@@ -53,11 +53,6 @@ function Settings() {
               to="/dashboard/settings/usersettings"
             >
               Usersettings
-            </Link>
-          </li>
-          <li>
-            <Link className="settingslink" to="/dashboard/settings/test">
-              Test
             </Link>
           </li>
           {adminsettings}

@@ -30,3 +30,27 @@ export async function HasPermission(
 
   return (await response.text()) === "true";
 }
+
+export async function GetPermissions(
+  token: string,
+  id: string
+): Promise<string[]> {
+  const response = await fetch(authServerUrl + "permission/" + id, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+    },
+    redirect: "follow",
+  });
+
+  if (!response.ok) {
+    let errorText: string = await response.text();
+    let error: Error = new Error();
+
+    error.name = errorText;
+    throw error;
+  }
+
+  return await response.json();
+}

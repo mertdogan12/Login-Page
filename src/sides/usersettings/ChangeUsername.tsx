@@ -27,7 +27,7 @@ function ChangeUsername() {
     try {
       const alertMessage: string = "Username has been changed";
       await changeUsername(newUsername.value, GetCookie("jwttoken"));
-      setColor("179;146;0;0");
+      setColor("179;146;0");
 
       if (alert === alertMessage) {
         setCount(count + 1);

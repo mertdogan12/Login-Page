@@ -1,5 +1,4 @@
 import fetch from "node-fetch";
-import { arch } from "os";
 
 let authServerUrl: string = process.env.REACT_APP_AUTHSERVER_URL as string;
 
@@ -99,4 +98,50 @@ export async function changeUsername(newUsername: string, token: string) {
   }
 
   return response.text();
+}
+
+export type User = {
+  name: string;
+  id: string;
+};
+export async function Jwt(token: string): Promise<User> {
+  const response = await fetch(authServerUrl + "users/jwt", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+    },
+    redirect: "follow",
+  });
+
+  if (!response.ok) {
+    let errorText: string = await response.text();
+    let error: Error = new Error();
+
+    error.name = errorText;
+    throw error;
+  }
+
+  return await response.json();
+}
+
+export async function GetUsers(token: string): Promise<User[]> {
+  const response = await fetch(authServerUrl + "users/getUsers", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+    },
+    redirect: "follow",
+  });
+
+  if (!response.ok) {
+    let errorText: string = await response.text();
+    let error: Error = new Error();
+
+    error.name = errorText;
+    throw error;
+  }
+
+  return await response.json();
 }

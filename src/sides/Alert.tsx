@@ -7,7 +7,6 @@ type MyProps = {
 let timers: Map<string, number> = new Map<string, number>();
 
 function Alert(props: MyProps) {
-
   if (props.alert) {
     setVisibility(true);
 

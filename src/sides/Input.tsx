@@ -24,6 +24,11 @@ function Input(props: MyProps) {
 
     if (props.callback) {
       element.style.display = "block";
+
+      setAlert({
+        color: "255;0;0",
+        alert: "",
+      });
     } else element.style.display = "none";
   }, [props.callback, element]);
 
@@ -55,7 +60,6 @@ function Input(props: MyProps) {
       }
 
       element.style.display = "none";
-      console.log(element.style.display);
     }
   }
 

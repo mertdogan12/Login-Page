@@ -32,7 +32,7 @@ function Input(props: MyProps) {
     } else element.style.display = "none";
   }, [props.callback, element]);
 
-  function onKeyDown(event: KeyboardEvent<HTMLInputElement>) {
+  async function onKeyDown(event: KeyboardEvent<HTMLInputElement>) {
     if (props.callback == null) return;
     if (element == null) return;
 
@@ -44,7 +44,7 @@ function Input(props: MyProps) {
           return obj;
         });
 
-        props.callback.function(...args);
+        await props.callback.function(...args);
 
         setAlert({
           color: "179;146;0",

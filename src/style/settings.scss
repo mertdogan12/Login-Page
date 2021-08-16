@@ -87,9 +87,14 @@ li:hover {
 }
 
 #changePasswordAlert,
+#asUsersInputAlert,
 #changeUsernameAlert {
   position: absolute;
   right: 3vw;
+  top: 3vh;
+}
+
+#changeUsernameAlert {
   top: 20vh;
 }
 
@@ -102,4 +107,16 @@ li:hover {
   position: absolute;
   right: 2vw;
   top: 20vh;
+}
+
+// Adminsettings
+#asUsersInput {
+  position: absolute;
+  left: calc(45vw - 10vw + 2px);
+  top: 45.8vh;
+
+  width: 15vw;
+  font-size: 3vh;
+
+  backdrop-filter: blur(5px);
 }

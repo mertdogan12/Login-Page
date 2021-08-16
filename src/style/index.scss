@@ -9,6 +9,7 @@ button {
 }
 
 h1,
+li,
 p,
 h2,
 label {
@@ -18,6 +19,13 @@ label {
 div,
 input {
   border-radius: 3px;
+}
+
+details > summary {
+  list-style: none;
+}
+details > summary::-webkit-details-marker {
+  display: none;
 }
 
 // Login

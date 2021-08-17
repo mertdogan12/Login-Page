@@ -62,33 +62,42 @@ function Input(props: MyProps) {
     if (props.callback == null) return;
     if (element == null) return;
 
-    if (event.key === "Enter") {
-      try {
-        const args: string[] = props.callback.arguments.map((obj) => {
-          if (obj === "<input>") return event.currentTarget.value;
+    switch (event.key) {
+      case "Enter":
+        try {
+          const args: string[] = props.callback.arguments.map((obj) => {
+            if (obj === "<input>") return event.currentTarget.value;
 
-          return obj;
-        });
+            return obj;
+          });
 
-        await props.callback.function(...args);
+          await props.callback.function(...args);
 
+          element.style.display = "none";
+          changeBackgroundFilter("none");
+
+          setAlert({
+            color: "179;146;0",
+            alert: "No errors",
+          });
+
+          setTimeout(() => window.location.reload(), 1000);
+        } catch (e) {
+          console.log(e);
+
+          setAlert({
+            color: "255;0;0",
+            alert: e.name,
+          });
+        }
+
+        break;
+
+      case "Escape":
         element.style.display = "none";
         changeBackgroundFilter("none");
 
-        setAlert({
-          color: "179;146;0",
-          alert: "No errors",
-        });
-
-        setTimeout(() => window.location.reload(), 1000);
-      } catch (e) {
-        console.log(e);
-
-        setAlert({
-          color: "255;0;0",
-          alert: e.name,
-        });
-      }
+        break;
     }
   }
 

@@ -1,5 +1,4 @@
 import { useState, KeyboardEvent, useEffect, useCallback } from "react";
-import { useHistory } from "react-router-dom";
 import Alert from "./Alert";
 
 export type Callback = {
@@ -15,7 +14,6 @@ type MyProps = {
 
 function Input(props: MyProps) {
   const element: HTMLElement | null = document.getElementById(props.id);
-  let history = useHistory();
   let [alert, setAlert] = useState({
     color: "",
     alert: "",
@@ -50,6 +48,8 @@ function Input(props: MyProps) {
     if (props.callback) {
       element.style.display = "block";
       changeBackgroundFilter("blur(8px)");
+
+      (document.getElementById(props.id) as HTMLElement).focus();
 
       setAlert({
         color: "255;0;0",

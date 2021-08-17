@@ -69,18 +69,18 @@ function ChangePassword() {
 
   return (
     <div id="changePassword" onKeyDown={onKeyDown}>
-      <h2 className="header">Change Password</h2>
+      <h2 className="settings">Change Password</h2>
       <Alert id="changePasswordAlert" color={color} alert={alert} />
-      <label className="settingsLabel">Old Password </label>
-      <input className="settingsInput" id="oldPassword" type="password" />
+      <label className="usersettings">Old Password </label>
+      <input className="usersettings" id="oldPassword" type="password" />
       <br />
-      <label className="settingsLabel">New Password</label>
-      <input className="settingsInput" id="newPassword" type="password" />
+      <label className="usersettings">New Password</label>
+      <input className="usersettings" id="newPassword" type="password" />
       <br />
-      <label className="settingsLabel">New Password</label>
-      <input className="settingsInput" id="newPassword2" type="password" />
+      <label className="usersettings">New Password</label>
+      <input className="usersettings" id="newPassword2" type="password" />
       <br />
-      <button className="settingsButtons" onClick={onButtonClick}>
+      <button className="usersettings" onClick={onButtonClick}>
         Change Password
       </button>
     </div>

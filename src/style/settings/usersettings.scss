@@ -1,0 +1,23 @@
+// ChangePassword
+button.usersettings {
+  box-shadow: 0px 12px 12px -30px rgba(0, 0, 0, 0.67);
+  border: none;
+  transition: background-color 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
+
+  font-size: 1.5vh;
+  margin: 2vh 0px 0px 1.5vw;
+}
+
+button.usersettings:hover {
+  background-color: #378bde;
+  box-shadow: 0px 10px 20px -15px rgba(0, 0, 0, 0.67);
+}
+
+label.usersettings {
+  margin: 3vh 1vw 0px 1.5vw;
+}
+
+// ChangeUsername
+#changeUsername {
+  margin-top: 5vh;
+}

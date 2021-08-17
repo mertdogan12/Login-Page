@@ -1,0 +1,24 @@
+// Adminsettings
+#asUsersInput {
+  position: absolute;
+  left: calc(45vw - 10vw + 2px);
+  top: 45.8vh;
+
+  width: 15vw;
+  font-size: 3vh;
+
+  backdrop-filter: blur(5px);
+}
+
+button.adminsettings {
+  margin-right: 1.2vw;
+  padding: 0.3vh 0.6vw;
+
+  border: none;
+
+  transition: background-color 0.25s ease-in-out;
+}
+
+button.adminsettings:hover {
+  background-color: #378bde;
+}

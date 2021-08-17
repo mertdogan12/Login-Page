@@ -61,6 +61,14 @@ export async function PermissionAction(
   permission: string,
   action: string
 ) {
+  if (!token || !id || !permission || !action) {
+    const errorMessage: string = "Input is empty";
+    let error: Error = new Error("One of the parameters is null or empty");
+
+    error.name = errorMessage;
+    throw error;
+  }
+
   if (action !== "add" && action !== "remove")
     throw new Error("Action must be add or remove");
 

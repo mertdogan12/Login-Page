@@ -1,55 +1,10 @@
-// Sidebar
-#sidebar {
-  background-color: #0d1117;
-  border-right: 2px solid #30363d;
-
-  border-radius: 0px;
-
-  height: 96.3vh;
-  width: 10vw;
-  position: absolute;
-
-  padding: 0px;
-  margin: 0px;
-}
-
-.adminsettings,
-.settingslink {
-  text-decoration: none;
-  color: #58a6ff;
-  display: block;
-
-  font-size: 2vh;
-}
-
-.adminsettings {
-  font-size: 1.5vh;
-}
-
-summary {
-  color: #58a6ff;
-  font-size: 2vh;
-}
-
-details summary::webkit-details-marker {
-  display: none;
-}
-
-details,
-li {
-  padding: 0.5vh 3vw 0.5vh 1vw;
-  list-style: none;
-
-  transition: background-color 0.25s ease-in-out;
-}
-
-details:hover,
-li:hover {
-  background-color: #21262d;
-}
+// Imports
+@import "./settings/sidebar.scss";
+@import "./settings/usersettings.scss";
+@import "./settings/adminsettings.scss";
 
 // Overall Settings
-.header {
+h2.settings {
   font-size: 24px;
   margin-left: 1.5vw;
 }
@@ -59,31 +14,6 @@ li:hover {
   left: calc(10vw + 2px);
   width: calc(90vw - 2px);
   height: 96.3vh;
-}
-
-// ChangePassword
-.settingsButtons {
-  box-shadow: 0px 12px 12px -30px rgba(0, 0, 0, 0.67);
-  border: none;
-  transition: background-color 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
-
-  font-size: 1.5vh;
-  margin: 2vh 0px 0px 1.5vw;
-}
-
-.settingsButtons:hover {
-  background-color: #378bde;
-  box-shadow: 0px 10px 20px -15px rgba(0, 0, 0, 0.67);
-}
-
-.settingsLabel {
-  margin: 3vh 1vw 0px 1.5vw;
-}
-
-.changePasswordAlert {
-  position: absolute;
-  right: 2vw;
-  top: 2vh;
 }
 
 #changePasswordAlert,
@@ -96,27 +26,4 @@ li:hover {
 
 #changeUsernameAlert {
   top: 20vh;
-}
-
-// ChangeUsername
-#changeUsername {
-  margin-top: 5vh;
-}
-
-.changeUsernameAlert {
-  position: absolute;
-  right: 2vw;
-  top: 20vh;
-}
-
-// Adminsettings
-#asUsersInput {
-  position: absolute;
-  left: calc(45vw - 10vw + 2px);
-  top: 45.8vh;
-
-  width: 15vw;
-  font-size: 3vh;
-
-  backdrop-filter: blur(5px);
 }

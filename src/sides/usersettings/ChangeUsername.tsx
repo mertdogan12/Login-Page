@@ -47,12 +47,12 @@ function ChangeUsername() {
 
   return (
     <div id="changeUsername">
-      <h2 className="header">Change Username</h2>
+      <h2 className="settings">Change Username</h2>
       <Alert id="changeUsernameAlert" color={color} alert={alert} />
-      <label className="settingsLabel">New Username</label>
-      <input className="settingsInput" onKeyDown={onKeyDown} id="newUsername" />
+      <label className="usersettings">New Username</label>
+      <input className="usersettings" onKeyDown={onKeyDown} id="newUsername" />
       <br />
-      <button className="settingsButtons" onClick={onButtonClick}>
+      <button className="usersettings" onClick={onButtonClick}>
         Change Username
       </button>
     </div>

@@ -1,0 +1,47 @@
+#sidebar {
+  background-color: #0d1117;
+  border-right: 2px solid #30363d;
+
+  border-radius: 0px;
+
+  height: 96.3vh;
+  width: 10vw;
+  position: absolute;
+
+  padding: 0px;
+  margin: 0px;
+}
+
+.settingslink {
+  text-decoration: none;
+  color: #58a6ff;
+  display: block;
+
+  font-size: 2vh;
+}
+
+#adminsettings {
+  font-size: 1.5vh;
+}
+
+summary {
+  color: #58a6ff;
+  font-size: 2vh;
+}
+
+details summary::webkit-details-marker {
+  display: none;
+}
+
+details,
+li {
+  padding: 0.5vh 3vw 0.5vh 1vw;
+  list-style: none;
+
+  transition: background-color 0.25s ease-in-out;
+}
+
+details:hover,
+li:hover {
+  background-color: #21262d;
+}

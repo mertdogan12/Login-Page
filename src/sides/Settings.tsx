@@ -27,7 +27,8 @@ function Settings() {
           <details>
             <summary>Adminsettings</summary>
             <Link
-              className="adminsettings"
+              className="settingslink"
+              id="adminsettings"
               to="/dashboard/settings/adminsettings/users"
             >
               User Settings

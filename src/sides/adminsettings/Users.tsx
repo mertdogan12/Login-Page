@@ -70,10 +70,18 @@ function Users() {
                 return <li key={index}>{permission}</li>;
               })}
             </ul>
-            <button onClick={onClick} id={"add;" + obj.id}>
+            <button
+              className="adminsettings"
+              onClick={onClick}
+              id={"add;" + obj.id}
+            >
               Add Permission
             </button>
-            <button onClick={onClick} id={"remove;" + obj.id}>
+            <button
+              className="adminsettings"
+              onClick={onClick}
+              id={"remove;" + obj.id}
+            >
               Remove Permission
             </button>
           </details>

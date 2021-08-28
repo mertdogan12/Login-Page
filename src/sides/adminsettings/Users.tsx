@@ -3,8 +3,9 @@ import {
   GetPermissions,
   PermissionAction,
 } from "../../apis/authServer/Permission";
-import { GetUsers, User } from "../../apis/authServer/Users";
+import { DeleteUser, GetUsers, User } from "../../apis/authServer/Users";
 import { GetCookie } from "../../apis/Cookies";
+import Alert from "../Alert";
 import Input, { Callback } from "../Input";
 
 function Users() {
@@ -12,6 +13,10 @@ function Users() {
   let [text, setText] = useState(<div className="lds-dual-ring"></div>);
   let [users, setUsers] = useState(new Array<UserWithPermission>());
   let [callback, setCallback] = useState(null as Callback | null);
+  let [alert, setAlert] = useState({
+    alert: "",
+    color: "255;0;0",
+  });
 
   type UserWithPermission = {
     id: string;
@@ -53,6 +58,18 @@ function Users() {
     });
   }
 
+  async function deleteUser(event: MouseEvent) {
+    try {
+      await DeleteUser(event.currentTarget.id, token);
+      window.location.reload();
+    } catch (e) {
+      setAlert({
+        alert: e.name,
+        color: "255;0;0",
+      });
+    }
+  }
+
   return (
     <div className="settingselemtent">
       {text}
@@ -61,6 +78,7 @@ function Users() {
         alertId="asUsersInputAlert"
         callback={callback}
       />
+      <Alert alert={alert.alert} color={alert.color} id="asUsersAlert" />
       {users.map((obj) => {
         return (
           <details key={obj.id}>
@@ -83,6 +101,9 @@ function Users() {
               id={"remove;" + obj.id}
             >
               Remove Permission
+            </button>
+            <button id={obj.id} className="adminsettings" onClick={deleteUser}>
+              Remove User
             </button>
           </details>
         );

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { deleteUser, Jwt } from "../../apis/authServer/Users";
+import { DeleteUser as deleteUser, Jwt } from "../../apis/authServer/Users";
 import { DeleteCookie, GetCookie } from "../../apis/Cookies";
 import Alert from "../Alert";
 

@@ -50,10 +50,6 @@ class Login extends React.Component<MyProps, MyState> {
     if (event.key === "Enter") {
       this.onLoginClick();
     }
-
-    this.setState({
-      error: "",
-    });
   }
 
   render() {

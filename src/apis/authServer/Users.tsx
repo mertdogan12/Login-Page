@@ -145,3 +145,22 @@ export async function GetUsers(token: string): Promise<User[]> {
 
   return await response.json();
 }
+
+export async function DeleteUser(id: string, token: string) {
+  const response = await fetch(`${authServerUrl}users/deleteUser/${id}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+    },
+    redirect: "follow",
+  });
+
+  if (!response.ok) {
+    let errorText: string = await response.text();
+    let error: Error = new Error("Respose is not ok");
+
+    error.name = errorText;
+    throw error;
+  }
+}

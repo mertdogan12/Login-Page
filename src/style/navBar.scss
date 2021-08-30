@@ -19,6 +19,12 @@
   float: right;
 }
 
+button.navbarLink {
+  float: left;
+  background-color: #161b22;
+  border: none;
+}
+
 .navbarLink:hover {
   background-color: #1f6feb;
 }

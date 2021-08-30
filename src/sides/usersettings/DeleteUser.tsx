@@ -17,9 +17,7 @@ function DeleteUser() {
       await deleteUser((await Jwt(token)).id, token);
       DeleteCookie("jwttoken");
       history.push("/auth/login");
-    } catch (e) {
-      console.log(e);
-
+    } catch (e: any) {
       setAlert({
         alert: e.name,
         color: "255;0;0",

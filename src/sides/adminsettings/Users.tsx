@@ -62,11 +62,9 @@ function Users() {
     try {
       await DeleteUser(event.currentTarget.id, token);
       window.location.reload();
-    } catch (e) {
-      let error = e as Error;
-
+    } catch (e: any) {
       setAlert({
-        alert: error.name,
+        alert: e.name,
         color: "255;0;0",
       });
     }

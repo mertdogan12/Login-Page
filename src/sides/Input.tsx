@@ -82,10 +82,10 @@ function Input(props: MyProps) {
           });
 
           setTimeout(() => window.location.reload(), 1000);
-        } catch (e) {
+        } catch (e: any) {
           setAlert({
             color: "255;0;0",
-            alert: (e as Error).name,
+            alert: e.name,
           });
         }
 

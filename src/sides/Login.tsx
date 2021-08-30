@@ -39,9 +39,9 @@ class Login extends React.Component<MyProps, MyState> {
       SetCookie("jwttoken", token, 7);
 
       this.props.history.push("/dashboard/start");
-    } catch (error) {
+    } catch (error: any) {
       this.setState({
-        error: (error as Error).name,
+        error: error.name,
       });
     }
   }

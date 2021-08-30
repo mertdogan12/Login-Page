@@ -83,11 +83,11 @@ function Input(props: MyProps) {
 
           setTimeout(() => window.location.reload(), 1000);
         } catch (e) {
-          console.log(e);
+          const error = e as Error;
 
           setAlert({
             color: "255;0;0",
-            alert: e.name,
+            alert: error.name,
           });
         }
 

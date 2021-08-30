@@ -8,13 +8,13 @@ let timers: Map<string, number> = new Map<string, number>();
 
 function Alert(props: MyProps) {
   if (props.alert) {
-    setVisibility(true);
+    setVisibility(true, false);
 
     if (timers.get(props.id)) clearTimeout(timers.get(props.id));
-    timers.set(props.id, setTimeout(setVisibility, 5 * 1000, false));
-  } else setVisibility(false);
+    timers.set(props.id, setTimeout(setVisibility, 5 * 1000, false, true));
+  } else setVisibility(false, false);
 
-  function setVisibility(visibility: boolean) {
+  function setVisibility(visibility: boolean, timer: boolean) {
     const alertElement: HTMLElement | null = document.getElementById(props.id);
     const alertTextElement: HTMLElement | null = document.getElementById(
       props.id + "Text"
@@ -26,9 +26,11 @@ function Alert(props: MyProps) {
 
     if (visibility) {
       alertElement.style.visibility = "visible";
-    } else
+    } else if (timer)
       setTimeout(
-        (element: HTMLElement) => (element.style.visibility = "hidden"),
+        (element: HTMLElement) => {
+          element.style.visibility = "hidden";
+        },
         1000,
         alertElement
       );

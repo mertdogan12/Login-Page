@@ -32,7 +32,7 @@ function ChangeUsername() {
       if (alert === alertMessage) {
         setCount(count + 1);
       } else setAlert("Username has been changed");
-    } catch (error) {
+    } catch (error: any) {
       setColor("255;0;0");
 
       if (alert === error.name) {

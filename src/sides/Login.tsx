@@ -41,7 +41,7 @@ class Login extends React.Component<MyProps, MyState> {
       this.props.history.push("/dashboard/start");
     } catch (error) {
       this.setState({
-        error: error.name,
+        error: (error as Error).name,
       });
     }
   }

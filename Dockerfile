@@ -1,6 +1,6 @@
 FROM node as build-deps
 WORKDIR /usr/src/app
-ENV REACT_APP_AUTHSERVER_URL=https://www.dogan.at/authServer/
+ENV REACT_APP_AUTHSERVER_URL=https://api.mert.nrw/authServer/
 COPY package.json ./
 RUN npm install
 COPY . ./
